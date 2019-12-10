@@ -1,6 +1,6 @@
 <?php 
-$host = "";
-$user = "";
+$host = "localhost";
+$user = "root";
 $password = "";
 $database = "gameforum";
 

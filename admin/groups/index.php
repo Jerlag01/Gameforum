@@ -192,7 +192,7 @@
                                        	<td><code><?php echo htmlspecialchars($row2['idgroups']);?></code></td>
 										<td class="text-center"><?php  echo htmlspecialchars($row2['groupname']); ?></td>
 										<td>
-											<form name="deletegroup" action="index.php" method="post">
+											<form name="deletegroup" action="<?php $_SERVER['PHP_SELF'];?>" method="post">
 												<input type="hidden" name="removegroup" value="<?php echo htmlspecialchars($row2['idgroups']); ?>" />
 												<input type="submit" name="deletegroup" value="Delete Group" />
 											</form>
@@ -219,19 +219,17 @@
 							<div class="card-body">
             					<div>
 									<div class="form-group">
-                						<form id="makegroup" role="form" action="groups.php" method="post">
-                    						<div>
-                       							<div class="card card-primary">
-                           							<div class="card-body">
-														<div class="form-group">
-                           									<label for="groupname" class="control-label">Group Name</label>
-                           									<div>
-                               									<input type="text" autocomplete="off" name="groupname" placeholder="Group name" class="form-control" required/>
-                           									</div>
-														</div>
-                           							</div>
-                       							</div>
-                    						</div>									
+                						<form id="makegroup" role="form" action="<?php $_SERVER['PHP_SELF'];?>" method="post">
+                                            <div class="card card-primary">
+                                                <div class="card-body">
+													<div class="form-group">
+                           								<div>
+                                                            <label for="addgroup" class="control-label">Group Name</label>
+                               								<input type="text" autocomplete="off" name="addgroup" placeholder="Group name" class="form-control" required/>
+                           								</div>
+													</div>
+                           						</div>
+                                            </div>
                            					<div class="card-footer">
 												<button type="submit" class="btn btn-success btn-sm">Add Group</button>
                            					</div>
@@ -254,7 +252,7 @@
 			<?php
 				if (isset($_POST['makegroup'])) {
 					if ($_SERVER["REQUEST_METHOD"] == "POST") {
-						$groupsname = $conn->real_escape_string($_POST['groupname']);
+						$groupsname = $conn->real_escape_string($_POST['addgroup']);
 						$creategroup = "INSERT INTO groups (groupname) VALUES('".$groupsname."')";
 
 						if ($conn->query($creategroup) === true) {
