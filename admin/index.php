@@ -18,12 +18,46 @@
 	while($row = mysqli_fetch_assoc($query)) {
 		$_SESSION['title'] = $title = $row['sitename'];
 	}
+
+	$query1 = mysqli_query($conn, $countthreads);
+	if (! $query1) {
+		die ('Could not fetch threads: ' . mysqli_error($conn));
+	}
+	while ($row1 = mysqli_fetch_assoc($query1)) {
+		$threads = $row1['threads'];
+	}
+	
+	$query2 = mysqli_query($conn, $countreplies);
+	if (! $query2) {
+		die ('Could not fetch replies: ' . mysqli_error($conn));
+	}
+	while ($row2 = mysqli_fetch_assoc($query2)) {
+		$replies = $row2['replies'];
+	}
+	$messages = $threads + $replies;
+	
+	$query3 = mysqli_query($conn, $countusers);
+	if (! $query3) {
+		die ('Could not fetch users: '. mysqli_error($conn));
+	}
+	while($row3 = mysqli_fetch_assoc($query3)) {
+		$members = $row3['users'];
+	}
+	
+	$query4 = mysqli_query($conn, $staff);
+	if (! $query4) {
+		die ('Could not fetch users: '. mysqli_error($conn));
+	}
+	while($row4 = mysqli_fetch_assoc($query4)) {
+		$staffmembers = $row4['staff'];
+	}
   ?>
 
   <title><?php echo $title ?> | Admin</title>
 
   <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="./dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 	
@@ -123,29 +157,74 @@
   		</aside>
 
   		<div class="content-wrapper">
-    		<div class="content-header">
+			<div class="content-header">
       			<div class="container-fluid">
         			<div class="row mb-2">
         				<div class="col-sm-6">
-         					<h1 class="m-0 text-dark">Home</h1>
-          					</div>
-          					<div class="col-sm-6">
-            					<ol class="breadcrumb float-sm-right">
-              						<li class="breadcrumb-item active">Home</li>
-            					</ol>
-        					</div>
+							<h1 class="m-0 text-dark">Admin Panel</h1>
+          				</div>
+          				<div class="col-sm-6">
+            				<ol class="breadcrumb float-sm-right">
+              					<li class="breadcrumb-item active">Home</i>
+            				</ol>
         				</div>
-      				</div>
-    			</div>
+        			</div>
+      			</div>
+    		</div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3><?php echo $threads; ?></h3>
+                                <p>Threads</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-folder"></i>
+                            </div>
+                            <a href="./threads/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3><?php echo $messages;?></h3>
+                                <p>Messages</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-chatbox"></i>
+                            </div>
+                            <a href="./threads/messages/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3><?php echo $staffmembers; ?></h3>
+                                <p>Staff Members</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-person-stalker"></i>
+                            </div>
+                            <a href="./users/staff.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3><?php echo $members;?></h3>
+                                <p>Members</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-person"></i>
+                            </div>
+                            <a href="./users/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    			<div class="content">
-      				<div class="container-fluid">
-        				<div class="row">
-          
-        				</div>
-      				</div>
-    			</div>
-  			</div>
+        </div>
 
   			<footer class="main-footer">
     			<?php include('./required/footer.php');?>

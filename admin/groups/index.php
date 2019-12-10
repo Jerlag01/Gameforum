@@ -192,7 +192,7 @@
                                        	<td><code><?php echo htmlspecialchars($row2['idgroups']);?></code></td>
 										<td class="text-center"><?php  echo htmlspecialchars($row2['groupname']); ?></td>
 										<td>
-											<form name="deletegroup" action="<?php $_SERVER['PHP_SELF'];?>" method="post">
+											<form name="deletegroup" action="./index.php" method="post">
 												<input type="hidden" name="removegroup" value="<?php echo htmlspecialchars($row2['idgroups']); ?>" />
 												<input type="submit" name="deletegroup" value="Delete Group" />
 											</form>
@@ -219,7 +219,7 @@
 							<div class="card-body">
             					<div>
 									<div class="form-group">
-                						<form id="makegroup" role="form" action="<?php $_SERVER['PHP_SELF'];?>" method="post">
+                						<form id="makegroup" role="form" action="./index.php" method="post">
                                             <div class="card card-primary">
                                                 <div class="card-body">
 													<div class="form-group">
@@ -253,7 +253,7 @@
 				if (isset($_POST['makegroup'])) {
 					if ($_SERVER["REQUEST_METHOD"] == "POST") {
 						$groupsname = $conn->real_escape_string($_POST['addgroup']);
-						$creategroup = "INSERT INTO groups (groupname) VALUES('".$groupsname."')";
+						$creategroup = "INSERT INTO groups (groupname) VALUES ('".$groupsname."')";
 
 						if ($conn->query($creategroup) === true) {
 							$_SESSION['message'] = "$groupsname has been added.";
@@ -265,9 +265,9 @@
 					}
 				}
 
-				if (isset($_POST['removegroup'])) {
+				if (isset($_POST['deletegroup'])) {
 					if ($_SERVER["REQUEST_METHOD"] == "POST") {
-						$groupid = $conn->real_escape_string($_POST['deletegroup']);
+						$groupid = $conn->real_escape_string($_POST['removegroup']);
 						$deletegroup = "DELETE FROM groups where idgroups = $groupid";
 		
 						if ($conn->query($deletegroup) === true) {
