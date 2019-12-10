@@ -1,9 +1,7 @@
-<h1 style="color: red"><strong>This project has been discontinued and moved to <a href="https://github.com/Jerlag01/Gameforum">another repo</a> to continue work</strong></h1>
-
 <h1>Dream-Game</h1>
 
   <div>
-    <a> Dream-Game is een forum specifiek voor gamers waar ze meerdere games kunnen bespreken. De games voegen ze zelf naar eigen wil toe of worden via de backend toegevoegd vanuit de API van Steam.
+    <a> Dream-Game is a specific forum for gamers that can talk about any game they want. The games are added through the Steam-APi and can also be added by the users themselves.
     </a>
   </div>
 
