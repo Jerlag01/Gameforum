@@ -14,3 +14,4 @@
   <li><a href="https://dev.mysql.com/downloads/mysql/">MySQL Community Server</a></li>
   <li><a href="https://www.mysql.com/products/workbench/">MySQL Workbench</a></li>
   <li><a href="https://notepad-plus-plus.org/">Notepad++</a></li>
+  <li><a href="https://nkdev.info/docs/goodgames-html/">GoodGames Template</a></li>
