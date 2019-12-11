@@ -223,17 +223,14 @@
                     </div>
                 </div>
             </div>
-
-        </div>
-
-  			<footer class="main-footer">
-    			<?php include('./required/footer.php');?>
-			</footer>
 		</div>
 
-
-		<script src="./plugins/jquery/jquery.min.js"></script>
-		<script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<script src="./dist/js/adminlte.min.js"></script>
-	</body>
+  		<footer class="main-footer">
+    		<?php include('./required/footer.php');?>
+		</footer>
+	</div>
+	<script src="./plugins/jquery/jquery.min.js"></script>
+	<script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="./dist/js/adminlte.min.js"></script>
+</body>
 </html>
