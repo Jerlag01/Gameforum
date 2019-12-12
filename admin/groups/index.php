@@ -219,7 +219,7 @@
 							<div class="card-body">
             					<div>
 									<div class="form-group">
-                						<form id="makegroup" role="form" action="./index.php" method="post">
+                						<form name="makegroup" action="./index.php" method="post">
                                             <div class="card card-primary">
                                                 <div class="card-body">
 													<div class="form-group">
@@ -231,7 +231,7 @@
                            						</div>
                                             </div>
                            					<div class="card-footer">
-												<button type="submit" class="btn btn-success btn-sm">Add Group</button>
+												<button type="submit" name="makegroup" class="btn btn-success btn-sm">Add Group</button>
                            					</div>
                 						</form>
             						</div>
@@ -252,15 +252,15 @@
 			<?php
 				if (isset($_POST['makegroup'])) {
 					if ($_SERVER["REQUEST_METHOD"] == "POST") {
-						$groupsname = $conn->real_escape_string($_POST['addgroup']);
-						$creategroup = "INSERT INTO groups (groupname) VALUES ('".$groupsname."')";
+						$groupname = $conn->real_escape_string($_POST['addgroup']);
+						$creategroup = "INSERT INTO groups (groupname) VALUES ('".$groupname."')";
 
 						if ($conn->query($creategroup) === true) {
-							$_SESSION['message'] = "$groupsname has been added.";
+							$_SESSION['message'] = "$groupname has been added.";
 							echo "<script>location.href = './index.php';</script>";
 						}
 						else {
-							$_SESSION['message'] = "$groupsname could not be added. Contact your Support Team.";
+							$_SESSION['message'] = "$groupname could not be added. Contact your Support Team.";
 						}
 					}
 				}
